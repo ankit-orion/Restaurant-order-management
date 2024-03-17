@@ -1,0 +1,4 @@
+username: Golang
+pass: CMjBapnqTBpghOFD
+
+MongoDb_URL : mongodb+srv://GoLang:CMjBapnqTBpghOFD@mycluster.qwn32tt.mongodb.net/?retryWrites=true&w=majority

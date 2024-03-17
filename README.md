@@ -1,29 +1,100 @@
-# Order Management System
+# Restaurant Order Management API
 
-This project is an Order Management System developed using the Go programming language and the Gin framework for backend development. MongoDB is utilized as the database solution for storing comprehensive order details.
+This repository contains an API for managing orders in a restaurant setting. The API is built using Go (Golang) and utilizes Gin framework for routing and MongoDB for data storage.
 
-## Key Features
+## Getting Started
 
-- **RESTful APIs:** Implemented RESTful APIs to facilitate seamless creation, retrieval, updating, and deletion of orders, empowering users to efficiently manage their orders.
-  
-- **Comprehensive Data Storage:** Utilized MongoDB to store detailed order information including dish specifications, pricing details, server assignments, and table allocations.
-  
-- **Error Handling:** Employed effective error handling mechanisms to bolster the reliability and robustness of the application, ensuring smooth operation under various conditions.
+To run the API locally, follow these steps:
 
-## Technologies Used
+1. Clone the repository: git clone <https://github.com/TusharPachouri/Video-Streaming-Application.git>
 
-- Go
-- Gin framework
-- MongoDB
+2. Install dependencies:
 
-## Usage
+3. Set up MongoDB and configure the connection details in the `config.go` file.
 
-1. Clone the repository to your local machine.
-2. Install dependencies using `go mod tidy`.
-3. Configure the MongoDB connection in the `config.go` file.
-4. Run the application using `go run main.go`.
-5. Access the RESTful APIs to manage orders efficiently.
+4. Run the server:
+
+The server will start running on `localhost:8080` by default.
+
+## Endpoints
+
+### Add Order
+
+- **URL:** `/order/create`
+- **Method:** `POST`
+- **Function:** `routes.AddOrder`
+- **Description:** Add a new order.
+
+### Get Orders
+
+- **URL:** `/orders`
+- **Method:** `GET`
+- **Function:** `routes.GetOrders`
+- **Description:** Retrieve all orders.
+
+### Get Order by ID
+
+- **URL:** `/order/:id/`
+- **Method:** `GET`
+- **Function:** `routes.GetById`
+- **Description:** Retrieve an order by its ID.
+
+### Get Orders by Waiter Name
+
+- **URL:** `/waiter/:waiter`
+- **Method:** `GET`
+- **Function:** `routes.GetByWaiterName`
+- **Description:** Retrieve orders served by a specific waiter.
+
+### Update Order
+
+- **URL:** `/order/update/:id/`
+- **Method:** `PUT`
+- **Function:** `routes.UpdateOrder`
+- **Description:** Update an order by its ID.
+
+### Update Waiter Name by ID
+
+- **URL:** `/waiter/update/:id`
+- **Method:** `PUT`
+- **Function:** `routes.UpdateWaiterNameById`
+- **Description:** Update the name of the waiter associated with an order.
+
+### Delete Order by ID
+
+- **URL:** `/order/delete/:id`
+- **Method:** `DELETE`
+- **Function:** `routes.DeleteById`
+- **Description:** Delete an order by its ID.
+
+### Delete Orders by Waiter
+
+- **URL:** `/waiter/delete/:waiter`
+- **Method:** `DELETE`
+- **Function:** `routes.DeleteByWaiter`
+- **Description:** Delete all orders served by a specific waiter.
+
+## Models
+
+### Order
+
+type Order struct {
+    ID     primitive.ObjectID `bson:"_id"`
+    Dish   string             `json:"dish" validate:"required"`
+    Price  float32            `json:"price"`
+    Server string             `json:"server" validate:"required"`
+    Table  string             `json:"table"`
+}
+
+type Waiter struct {
+    Server string `json:"server"`
+}
+
+## Dependencies
+
+- **Gin**: Web framework for Go.
+- **MongoDB Go Driver**: MongoDB driver for Go.
 
 ## Contributing
 
-Contributions are welcome! Feel free to fork the repository, make your changes, and submit a pull request.
+Contributions are welcome. Before contributing, please open an issue to discuss the changes you would like to make.
