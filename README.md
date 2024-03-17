@@ -6,7 +6,7 @@ This repository contains an API for managing orders in a restaurant setting. The
 
 To run the API locally, follow these steps:
 
-1. Clone the repository: git clone <https://github.com/TusharPachouri/Video-Streaming-Application.git>
+1. Clone the repository: git clone.
 
 2. Install dependencies:
 
